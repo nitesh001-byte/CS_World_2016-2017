@@ -28,5 +28,27 @@
     <h2><a href="http://192.168.33.224/index.html">Natasha</a></h2>
     <h2><a href="http://192.168.xx.xxx/index.html">RK</a></h2>
     <h2><a href="http://192.168.xx.xxx/index.html">Jeremy</a></h2>   
+    
+    <!-- Do not edit below this line -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $.fn.extend({
+                checkPageHead: function (){
+                $.each(this, function(){
+                    var $link = $(this);
+                    $.ajax({
+                        type: 'HEAD',
+                        url: $link.attr("href"),
+                        error: function(){
+                            $link.css("color", "gray");
+                        }
+                    });
+                });
+                }
+            });
+            $(document).ready(function(){
+                $("a").checkPageHead("default.html");
+            });
+        </script>
   </body>
 </html>
